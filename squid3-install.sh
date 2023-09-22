@@ -3,11 +3,11 @@
 ############################################################
 # Squid Proxy Installer
 # Author: Yujin Boby
-# Email: admin@serverOk.in
-# Github: https://github.com/serverok/squid-proxy-installer/
-# Web: https://serverok.in/squid
+# Email: admin@im6h.in
+# Github: https://github.com/im6h/squid-proxy-installer/
+# Web: https://im6h.in/squid
 # If you need professional assistance, reach out to
-# https://serverok.in/contact
+# https://im6h.in/contact
 ############################################################
 
 if [ `whoami` != root ]; then
@@ -15,10 +15,10 @@ if [ `whoami` != root ]; then
 	exit 1
 fi
 
-/usr/bin/wget -q --no-check-certificate -O /usr/local/bin/sok-find-os https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/sok-find-os.sh > /dev/null 2>&1
+/usr/bin/wget -q --no-check-certificate -O /usr/local/bin/sok-find-os https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/sok-find-os.sh > /dev/null 2>&1
 chmod 755 /usr/local/bin/sok-find-os
 
-/usr/bin/wget -q --no-check-certificate -O /usr/local/bin/squid-uninstall https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid-uninstall.sh > /dev/null 2>&1
+/usr/bin/wget -q --no-check-certificate -O /usr/local/bin/squid-uninstall https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid-uninstall.sh > /dev/null 2>&1
 chmod 755 /usr/local/bin/squid-uninstall
 
 if [[ -d /etc/squid/ || -d /etc/squid3/ ]]; then
@@ -35,7 +35,7 @@ SOK_OS=$(/usr/local/bin/sok-find-os)
 
 if [ $SOK_OS == "ERROR" ]; then
     echo "OS NOT SUPPORTED.\n"
-    echo "Contact https://serverok.in/contact to add support for your OS."
+    echo "Contact https://im6h.in/contact to add support for your OS."
     exit 1;
 fi
 
@@ -45,7 +45,7 @@ if [ $SOK_OS == "ubuntu2204" ]; then
     touch /etc/squid/passwd
     mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/ubuntu-2204.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/ubuntu-2204.conf
     if [ -f /sbin/iptables ]; then
         /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
         /sbin/iptables-save
@@ -58,7 +58,7 @@ elif [ $SOK_OS == "ubuntu2004" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     if [ -f /sbin/iptables ]; then
         /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
         /sbin/iptables-save
@@ -71,7 +71,7 @@ elif [ $SOK_OS == "ubuntu1804" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     service squid restart
@@ -82,7 +82,7 @@ elif [ $SOK_OS == "ubuntu1604" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     service squid restart
@@ -93,7 +93,7 @@ elif [ $SOK_OS == "ubuntu1404" ]; then
     touch /etc/squid3/passwd
     /bin/rm -f /etc/squid3/squid.conf
     /usr/bin/touch /etc/squid3/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     service squid3 restart
@@ -108,7 +108,7 @@ elif [ $SOK_OS == "debian8" ]; then
     touch /etc/squid3/passwd
     /bin/rm -f /etc/squid3/squid.conf
     /usr/bin/touch /etc/squid3/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     service squid3 restart
@@ -122,7 +122,7 @@ elif [ $SOK_OS == "debian9" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     systemctl enable squid
@@ -135,7 +135,7 @@ elif [ $SOK_OS == "debian10" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
     /sbin/iptables-save
     systemctl enable squid
@@ -148,7 +148,7 @@ elif [ $SOK_OS == "debian11" ]; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/squid.conf
     if [ -f /sbin/iptables ]; then
         /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
         /sbin/iptables-save
@@ -161,7 +161,7 @@ elif [ $SOK_OS == "debian12" ]; then
     /usr/bin/apt update > /dev/null 2>&1
     /usr/bin/apt -y install apache2-utils squid  > /dev/null 2>&1
     touch /etc/squid/passwd
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/conf.d/serverok.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/debian12.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/conf.d/im6h.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/debian12.conf
     if [ -f /sbin/iptables ]; then
         /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
         /sbin/iptables-save
@@ -172,7 +172,7 @@ elif [ $SOK_OS == "centos7" ]; then
     yum install squid httpd-tools -y
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid
     systemctl restart squid
     if [ -f /usr/bin/firewall-cmd ]; then
@@ -183,7 +183,7 @@ elif [ "$SOK_OS" == "centos8" ] || [ "$SOK_OS" == "almalinux8" ] || [ "$SOK_OS" 
     yum install squid httpd-tools wget -y
     mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid
     systemctl restart squid
     if [ -f /usr/bin/firewall-cmd ]; then
@@ -194,7 +194,7 @@ elif [ "$SOK_OS" == "centos8s" ]; then
     dnf install squid httpd-tools wget -y > /dev/null 2>&1
     mv /etc/squid/squid.conf /etc/squid/squid.conf.bak 
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid  > /dev/null 2>&1
     systemctl restart squid > /dev/null 2>&1
     if [ -f /usr/bin/firewall-cmd ]; then
@@ -205,7 +205,7 @@ elif [ "$SOK_OS" == "centos9" ]; then
     dnf install squid httpd-tools wget -y > /dev/null 2>&1
     mv /etc/squid/squid.conf /etc/squid/squid.conf.sok
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/conf/squid-centos7.conf
+    /usr/bin/wget -q --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/im6h/squid-proxy-installer/master/conf/squid-centos7.conf
     systemctl enable squid  > /dev/null 2>&1
     systemctl restart squid > /dev/null 2>&1
     if [ -f /usr/bin/firewall-cmd ]; then
@@ -219,9 +219,9 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 echo -e "${NC}"
-echo -e "${GREEN}Thank you for using ServerOk Squid Proxy Installer.${NC}"
+echo -e "${GREEN}Thank you for using im6h Squid Proxy Installer.${NC}"
 echo
 echo -e "${CYAN}To create a proxy user, run command: squid-add-user${NC}"
-echo -e "${CYAN}To change squid proxy port, see ${GREEN}https://serverok.in/how-to-change-port-of-squid-proxy-server${NC}"
+echo -e "${CYAN}To change squid proxy port, see ${GREEN}https://im6h.in/how-to-change-port-of-squid-proxy-server${NC}"
 echo -e "${NC}"
 
